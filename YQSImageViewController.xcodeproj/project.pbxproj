@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04ECA5FB2E4B69A6D1AFFBEC /* libPods-YQSImageViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 924D0CBEE553679B5EAC4FEB /* libPods-YQSImageViewController.a */; };
+		618AC45520088A3E00F6BBD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC45420088A3E00F6BBD8 /* AppDelegate.m */; };
+		618AC45820088A3E00F6BBD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC45720088A3E00F6BBD8 /* ViewController.m */; };
+		618AC45B20088A3E00F6BBD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 618AC45920088A3E00F6BBD8 /* Main.storyboard */; };
+		618AC45D20088A3E00F6BBD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 618AC45C20088A3E00F6BBD8 /* Assets.xcassets */; };
+		618AC46020088A3E00F6BBD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 618AC45E20088A3E00F6BBD8 /* LaunchScreen.storyboard */; };
+		618AC46320088A3E00F6BBD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC46220088A3E00F6BBD8 /* main.m */; };
+		618AC46D20088A3E00F6BBD8 /* YQSImageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC46C20088A3E00F6BBD8 /* YQSImageViewControllerTests.m */; };
+		618AC47820088A3E00F6BBD8 /* YQSImageViewControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC47720088A3E00F6BBD8 /* YQSImageViewControllerUITests.m */; };
+		618AC48920088A8B00F6BBD8 /* YQSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC48620088A8B00F6BBD8 /* YQSImagePickerViewController.m */; };
+		618AC48A20088A8B00F6BBD8 /* YQSPlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC48820088A8B00F6BBD8 /* YQSPlayVideoViewController.m */; };
+		618AC48D20088AA800F6BBD8 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC48B20088AA800F6BBD8 /* UIViewExt.m */; };
+		618AC49120089EA800F6BBD8 /* SCItemInfoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC49020089EA800F6BBD8 /* SCItemInfoUtils.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		618AC46920088A3E00F6BBD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 618AC44820088A3E00F6BBD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 618AC44F20088A3E00F6BBD8;
+			remoteInfo = YQSImageViewController;
+		};
+		618AC47420088A3E00F6BBD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 618AC44820088A3E00F6BBD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 618AC44F20088A3E00F6BBD8;
+			remoteInfo = YQSImageViewController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		618AC45020088A3E00F6BBD8 /* YQSImageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQSImageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		618AC45320088A3E00F6BBD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		618AC45420088A3E00F6BBD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		618AC45620088A3E00F6BBD8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		618AC45720088A3E00F6BBD8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		618AC45A20088A3E00F6BBD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		618AC45C20088A3E00F6BBD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		618AC45F20088A3E00F6BBD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		618AC46120088A3E00F6BBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		618AC46220088A3E00F6BBD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		618AC46820088A3E00F6BBD8 /* YQSImageViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YQSImageViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		618AC46C20088A3E00F6BBD8 /* YQSImageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQSImageViewControllerTests.m; sourceTree = "<group>"; };
+		618AC46E20088A3E00F6BBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		618AC47320088A3E00F6BBD8 /* YQSImageViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YQSImageViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		618AC47720088A3E00F6BBD8 /* YQSImageViewControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQSImageViewControllerUITests.m; sourceTree = "<group>"; };
+		618AC47920088A3E00F6BBD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		618AC48520088A8B00F6BBD8 /* YQSPlayVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQSPlayVideoViewController.h; sourceTree = "<group>"; };
+		618AC48620088A8B00F6BBD8 /* YQSImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQSImagePickerViewController.m; sourceTree = "<group>"; };
+		618AC48720088A8B00F6BBD8 /* YQSImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQSImagePickerViewController.h; sourceTree = "<group>"; };
+		618AC48820088A8B00F6BBD8 /* YQSPlayVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQSPlayVideoViewController.m; sourceTree = "<group>"; };
+		618AC48B20088AA800F6BBD8 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		618AC48C20088AA800F6BBD8 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		618AC48E20088D9C00F6BBD8 /* YQSImagePrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQSImagePrefix.pch; sourceTree = "<group>"; };
+		618AC48F20089EA700F6BBD8 /* SCItemInfoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCItemInfoUtils.h; sourceTree = "<group>"; };
+		618AC49020089EA800F6BBD8 /* SCItemInfoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCItemInfoUtils.m; sourceTree = "<group>"; };
+		64B3A12A547D3186FB3D8EBC /* Pods-YQSImageViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YQSImageViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YQSImageViewController/Pods-YQSImageViewController.debug.xcconfig"; sourceTree = "<group>"; };
+		7009861123958C9AD13D966C /* Pods-YQSImageViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YQSImageViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-YQSImageViewController/Pods-YQSImageViewController.release.xcconfig"; sourceTree = "<group>"; };
+		924D0CBEE553679B5EAC4FEB /* libPods-YQSImageViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YQSImageViewController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		618AC44D20088A3E00F6BBD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ECA5FB2E4B69A6D1AFFBEC /* libPods-YQSImageViewController.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		618AC46520088A3E00F6BBD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		618AC47020088A3E00F6BBD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01C518383C53D7E40922A3C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64B3A12A547D3186FB3D8EBC /* Pods-YQSImageViewController.debug.xcconfig */,
+				7009861123958C9AD13D966C /* Pods-YQSImageViewController.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		618AC44720088A3E00F6BBD8 = {
+			isa = PBXGroup;
+			children = (
+				618AC45220088A3E00F6BBD8 /* YQSImageViewController */,
+				618AC46B20088A3E00F6BBD8 /* YQSImageViewControllerTests */,
+				618AC47620088A3E00F6BBD8 /* YQSImageViewControllerUITests */,
+				618AC45120088A3E00F6BBD8 /* Products */,
+				01C518383C53D7E40922A3C9 /* Pods */,
+				D2415608C4C772A2D169A175 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		618AC45120088A3E00F6BBD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				618AC45020088A3E00F6BBD8 /* YQSImageViewController.app */,
+				618AC46820088A3E00F6BBD8 /* YQSImageViewControllerTests.xctest */,
+				618AC47320088A3E00F6BBD8 /* YQSImageViewControllerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		618AC45220088A3E00F6BBD8 /* YQSImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				618AC45320088A3E00F6BBD8 /* AppDelegate.h */,
+				618AC45420088A3E00F6BBD8 /* AppDelegate.m */,
+				618AC45620088A3E00F6BBD8 /* ViewController.h */,
+				618AC45720088A3E00F6BBD8 /* ViewController.m */,
+				618AC48520088A8B00F6BBD8 /* YQSPlayVideoViewController.h */,
+				618AC48820088A8B00F6BBD8 /* YQSPlayVideoViewController.m */,
+				618AC48720088A8B00F6BBD8 /* YQSImagePickerViewController.h */,
+				618AC48620088A8B00F6BBD8 /* YQSImagePickerViewController.m */,
+				618AC48C20088AA800F6BBD8 /* UIViewExt.h */,
+				618AC48B20088AA800F6BBD8 /* UIViewExt.m */,
+				618AC48E20088D9C00F6BBD8 /* YQSImagePrefix.pch */,
+				618AC48F20089EA700F6BBD8 /* SCItemInfoUtils.h */,
+				618AC49020089EA800F6BBD8 /* SCItemInfoUtils.m */,
+				618AC45920088A3E00F6BBD8 /* Main.storyboard */,
+				618AC45C20088A3E00F6BBD8 /* Assets.xcassets */,
+				618AC45E20088A3E00F6BBD8 /* LaunchScreen.storyboard */,
+				618AC46120088A3E00F6BBD8 /* Info.plist */,
+				618AC46220088A3E00F6BBD8 /* main.m */,
+			);
+			path = YQSImageViewController;
+			sourceTree = "<group>";
+		};
+		618AC46B20088A3E00F6BBD8 /* YQSImageViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				618AC46C20088A3E00F6BBD8 /* YQSImageViewControllerTests.m */,
+				618AC46E20088A3E00F6BBD8 /* Info.plist */,
+			);
+			path = YQSImageViewControllerTests;
+			sourceTree = "<group>";
+		};
+		618AC47620088A3E00F6BBD8 /* YQSImageViewControllerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				618AC47720088A3E00F6BBD8 /* YQSImageViewControllerUITests.m */,
+				618AC47920088A3E00F6BBD8 /* Info.plist */,
+			);
+			path = YQSImageViewControllerUITests;
+			sourceTree = "<group>";
+		};
+		D2415608C4C772A2D169A175 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				924D0CBEE553679B5EAC4FEB /* libPods-YQSImageViewController.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		618AC44F20088A3E00F6BBD8 /* YQSImageViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 618AC47C20088A3E00F6BBD8 /* Build configuration list for PBXNativeTarget "YQSImageViewController" */;
+			buildPhases = (
+				799E5ABE6E22EF424FA08B24 /* [CP] Check Pods Manifest.lock */,
+				618AC44C20088A3E00F6BBD8 /* Sources */,
+				618AC44D20088A3E00F6BBD8 /* Frameworks */,
+				618AC44E20088A3E00F6BBD8 /* Resources */,
+				7CF555676BA7889B68BB6D20 /* [CP] Embed Pods Frameworks */,
+				A63993F7EDE22EB40082B898 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YQSImageViewController;
+			productName = YQSImageViewController;
+			productReference = 618AC45020088A3E00F6BBD8 /* YQSImageViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		618AC46720088A3E00F6BBD8 /* YQSImageViewControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 618AC47F20088A3E00F6BBD8 /* Build configuration list for PBXNativeTarget "YQSImageViewControllerTests" */;
+			buildPhases = (
+				618AC46420088A3E00F6BBD8 /* Sources */,
+				618AC46520088A3E00F6BBD8 /* Frameworks */,
+				618AC46620088A3E00F6BBD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				618AC46A20088A3E00F6BBD8 /* PBXTargetDependency */,
+			);
+			name = YQSImageViewControllerTests;
+			productName = YQSImageViewControllerTests;
+			productReference = 618AC46820088A3E00F6BBD8 /* YQSImageViewControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		618AC47220088A3E00F6BBD8 /* YQSImageViewControllerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 618AC48220088A3E00F6BBD8 /* Build configuration list for PBXNativeTarget "YQSImageViewControllerUITests" */;
+			buildPhases = (
+				618AC46F20088A3E00F6BBD8 /* Sources */,
+				618AC47020088A3E00F6BBD8 /* Frameworks */,
+				618AC47120088A3E00F6BBD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				618AC47520088A3E00F6BBD8 /* PBXTargetDependency */,
+			);
+			name = YQSImageViewControllerUITests;
+			productName = YQSImageViewControllerUITests;
+			productReference = 618AC47320088A3E00F6BBD8 /* YQSImageViewControllerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		618AC44820088A3E00F6BBD8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = lenkeng;
+				TargetAttributes = {
+					618AC44F20088A3E00F6BBD8 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					618AC46720088A3E00F6BBD8 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 618AC44F20088A3E00F6BBD8;
+					};
+					618AC47220088A3E00F6BBD8 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 618AC44F20088A3E00F6BBD8;
+					};
+				};
+			};
+			buildConfigurationList = 618AC44B20088A3E00F6BBD8 /* Build configuration list for PBXProject "YQSImageViewController" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 618AC44720088A3E00F6BBD8;
+			productRefGroup = 618AC45120088A3E00F6BBD8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				618AC44F20088A3E00F6BBD8 /* YQSImageViewController */,
+				618AC46720088A3E00F6BBD8 /* YQSImageViewControllerTests */,
+				618AC47220088A3E00F6BBD8 /* YQSImageViewControllerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		618AC44E20088A3E00F6BBD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				618AC46020088A3E00F6BBD8 /* LaunchScreen.storyboard in Resources */,
+				618AC45D20088A3E00F6BBD8 /* Assets.xcassets in Resources */,
+				618AC45B20088A3E00F6BBD8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		618AC46620088A3E00F6BBD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		618AC47120088A3E00F6BBD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		799E5ABE6E22EF424FA08B24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YQSImageViewController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CF555676BA7889B68BB6D20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YQSImageViewController/Pods-YQSImageViewController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A63993F7EDE22EB40082B898 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YQSImageViewController/Pods-YQSImageViewController-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YQSImageViewController/Pods-YQSImageViewController-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		618AC44C20088A3E00F6BBD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				618AC45820088A3E00F6BBD8 /* ViewController.m in Sources */,
+				618AC46320088A3E00F6BBD8 /* main.m in Sources */,
+				618AC48920088A8B00F6BBD8 /* YQSImagePickerViewController.m in Sources */,
+				618AC49120089EA800F6BBD8 /* SCItemInfoUtils.m in Sources */,
+				618AC45520088A3E00F6BBD8 /* AppDelegate.m in Sources */,
+				618AC48D20088AA800F6BBD8 /* UIViewExt.m in Sources */,
+				618AC48A20088A8B00F6BBD8 /* YQSPlayVideoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		618AC46420088A3E00F6BBD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				618AC46D20088A3E00F6BBD8 /* YQSImageViewControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		618AC46F20088A3E00F6BBD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				618AC47820088A3E00F6BBD8 /* YQSImageViewControllerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		618AC46A20088A3E00F6BBD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 618AC44F20088A3E00F6BBD8 /* YQSImageViewController */;
+			targetProxy = 618AC46920088A3E00F6BBD8 /* PBXContainerItemProxy */;
+		};
+		618AC47520088A3E00F6BBD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 618AC44F20088A3E00F6BBD8 /* YQSImageViewController */;
+			targetProxy = 618AC47420088A3E00F6BBD8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		618AC45920088A3E00F6BBD8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				618AC45A20088A3E00F6BBD8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		618AC45E20088A3E00F6BBD8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				618AC45F20088A3E00F6BBD8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		618AC47A20088A3E00F6BBD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		618AC47B20088A3E00F6BBD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		618AC47D20088A3E00F6BBD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64B3A12A547D3186FB3D8EBC /* Pods-YQSImageViewController.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G38AKGN648;
+				INFOPLIST_FILE = YQSImageViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.YQSImageViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		618AC47E20088A3E00F6BBD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7009861123958C9AD13D966C /* Pods-YQSImageViewController.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G38AKGN648;
+				INFOPLIST_FILE = YQSImageViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.YQSImageViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		618AC48020088A3E00F6BBD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G38AKGN648;
+				INFOPLIST_FILE = YQSImageViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.YQSImageViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YQSImageViewController.app/YQSImageViewController";
+			};
+			name = Debug;
+		};
+		618AC48120088A3E00F6BBD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G38AKGN648;
+				INFOPLIST_FILE = YQSImageViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.YQSImageViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YQSImageViewController.app/YQSImageViewController";
+			};
+			name = Release;
+		};
+		618AC48320088A3E00F6BBD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G38AKGN648;
+				INFOPLIST_FILE = YQSImageViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.YQSImageViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YQSImageViewController;
+			};
+			name = Debug;
+		};
+		618AC48420088A3E00F6BBD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G38AKGN648;
+				INFOPLIST_FILE = YQSImageViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.YQSImageViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YQSImageViewController;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		618AC44B20088A3E00F6BBD8 /* Build configuration list for PBXProject "YQSImageViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				618AC47A20088A3E00F6BBD8 /* Debug */,
+				618AC47B20088A3E00F6BBD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		618AC47C20088A3E00F6BBD8 /* Build configuration list for PBXNativeTarget "YQSImageViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				618AC47D20088A3E00F6BBD8 /* Debug */,
+				618AC47E20088A3E00F6BBD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		618AC47F20088A3E00F6BBD8 /* Build configuration list for PBXNativeTarget "YQSImageViewControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				618AC48020088A3E00F6BBD8 /* Debug */,
+				618AC48120088A3E00F6BBD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		618AC48220088A3E00F6BBD8 /* Build configuration list for PBXNativeTarget "YQSImageViewControllerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				618AC48320088A3E00F6BBD8 /* Debug */,
+				618AC48420088A3E00F6BBD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 618AC44820088A3E00F6BBD8 /* Project object */;
+}

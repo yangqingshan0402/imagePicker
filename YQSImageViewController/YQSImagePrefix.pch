@@ -1,0 +1,24 @@
+//
+//  YQSImagePrefix.pch
+//  YQSImageViewController
+//
+//  Created by lenkeng on 12/01/2018.
+//  Copyright © 2018 lenkeng. All rights reserved.
+//
+
+#ifndef YQSImagePrefix_pch
+#define YQSImagePrefix_pch
+
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
+#define kMainScreenBounds     [[UIScreen mainScreen] bounds]
+
+#define KMAIN_SCREEN_HEIGHT kMainScreenBounds.size.height
+#define KMAIN_SCREEN_WIDTH kMainScreenBounds.size.width
+
+#define MovieFromAlumbPath [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.mp4"]
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* YQSImagePrefix_pch */
