@@ -386,6 +386,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     self.preview = [[GPUImageView alloc] initWithFrame:self.view.bounds];
+    self.preview.contentMode = kGPUImageFillModePreserveAspectRatioAndFill;
     [self.view addSubview:_preview];
     _recording = NO;
     [self setBackButton];
