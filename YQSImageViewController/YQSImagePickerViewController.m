@@ -12,6 +12,7 @@
 #import "YQSPlayVideoViewController.h"
 #import <CoreMotion/CoreMotion.h>
 #import "YQSImagePrefix.pch"
+#import "ViewController.h"
 
 @interface YQSImagePickerViewController ()
 
@@ -131,18 +132,16 @@
     _recordButton.selected = NO;
     _time = 0;
     _timerLabel.text = [NSString stringWithFormat:@"%ld S", _time];
-    
-    _filter = [[GPUImageTransformFilter alloc] init];
     [_filter addTarget:_movieWriter];
     
-    [_videoCamera addTarget:_filter];
     _videoCamera.audioEncodingTarget = _movieWriter;
     
     
     GPUImageView *filterView = (GPUImageView *)self.preview;
     [_filter addTarget:filterView];
-
-    [_videoCamera startCameraCapture];
+    
+//    if (_videoCamera -> capturePaused == YES) {}
+    
     
     
     [self.view bringSubviewToFront:_recordButton];
@@ -161,7 +160,9 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.motionManager stopDeviceMotionUpdates];
+
 }
+
 
 -(void)timerOfRecord{
     _time++;
@@ -280,7 +281,7 @@
                     [self presentViewController:vc animated:NO completion:^{
 
                     }];
-//                    [self.view addSubview:vc.view];
+
                 });
 
             }
@@ -425,9 +426,13 @@
     
     _videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetiFrame960x540 cameraPosition:AVCaptureDevicePositionBack];
     _videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    [_videoCamera addAudioInputsAndOutputs];////该句可防止允许声音通过的情况下，避免录制第一帧黑屏闪屏(====)
+    
+    _filter = [[GPUImageTransformFilter alloc] init];
     
     
-    
+    [_videoCamera addTarget:_filter];
+    [_videoCamera startCameraCapture];
 
 //    _videoCamera.horizontallyMirrorFrontFacingCamera = YES;// YES代表前置的时候不是镜像
 //    _videoCamera.horizontallyMirrorRearFacingCamera = YES;//
@@ -506,6 +511,11 @@
 
 
 -(void)dealloc{
+    [_videoCamera stopCameraCapture];
+    _videoCamera.audioEncodingTarget = nil;
+    [_movieWriter cancelRecording];
+    [_filter removeTarget:_movieWriter];
+    [_timer invalidate];
     NSLog(@"YQSImagePickerViewController dealloc");
 //    [_motionManager stopDeviceMotionUpdates];
 }

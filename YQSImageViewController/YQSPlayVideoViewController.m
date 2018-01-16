@@ -52,16 +52,16 @@
     controller.player = self.player;
     
     //关闭AVPlayerViewController内部的约束
-    controller.view.translatesAutoresizingMaskIntoConstraints = YES;
+//    controller.view.translatesAutoresizingMaskIntoConstraints = YES;
     
     UIView* tapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KMAIN_SCREEN_WIDTH, KMAIN_SCREEN_HEIGHT)];
     [self.view addSubview:tapView];
-    
+
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [tapView addGestureRecognizer:tap];
     _tapView = tapView;
     
-    
+
     _sendButton = [[UIButton alloc] initWithFrame:CGRectMake(KMAIN_SCREEN_WIDTH - 70, KMAIN_SCREEN_HEIGHT - 50, 60, 50)];
     [_sendButton setTitle:@"send" forState:UIControlStateNormal];
     [self.view addSubview:_sendButton];
@@ -109,10 +109,12 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+
 }
 
 
@@ -141,9 +143,9 @@
 //        [_player pause];
         
         [_playerViewController.player seekToTime:kCMTimeZero];
-        _simpleView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        [self.view insertSubview:_simpleView belowSubview:_tapView];
-        _simpleView.image = [SCItemInfoUtils getImage:MovieFromAlumbPath];
+//        _simpleView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+//        [self.view insertSubview:_simpleView belowSubview:_tapView];
+//        _simpleView.image = [SCItemInfoUtils getImage:MovieFromAlumbPath];
         
         _playView.hidden = NO;
     });
@@ -160,14 +162,16 @@
     }else{
         [_playerViewController.player play];
         _playView.hidden = YES;
-        if (_simpleView) {
-            [_simpleView removeFromSuperview];
-        }
+//        if (_simpleView) {
+//            [_simpleView removeFromSuperview];
+//        }
     }
 }
 
 
 -(void)dealloc{
+    [_playerViewController.player pause];
+    _playerViewController.player = nil;
     NSLog(@"YQSPlayVideoViewController dealloc");
 }
 
