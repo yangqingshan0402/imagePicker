@@ -13,12 +13,14 @@
 #import <CoreMotion/CoreMotion.h>
 #import "YQSImagePrefix.pch"
 #import "ViewController.h"
+#import "GPUImageBeautifyFilter.h"
+#import "YQSImageMovieWriter.h"
 
 @interface YQSImagePickerViewController ()
 
 @property (nonatomic , strong) GPUImageVideoCamera* videoCamera;
 @property (nonatomic , strong) GPUImageOutput<GPUImageInput> *filter;
-@property (nonatomic , strong) GPUImageMovieWriter* movieWriter;
+@property (nonatomic , strong) YQSImageMovieWriter* movieWriter;
 @property (nonatomic , strong) NSTimer* timer;
 @property (nonatomic , strong) UIButton* recordButton;
 @property (nonatomic , assign) NSInteger time;
@@ -126,8 +128,9 @@
     NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
     unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
     NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
-    _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(540, 960)];
+    _movieWriter = [[YQSImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(540, 960)];
     _movieWriter.encodingLiveVideo = YES;
+    [_movieWriter configure];//每次都需要配置
     
     _recordButton.selected = NO;
     _time = 0;
@@ -167,16 +170,25 @@
 -(void)timerOfRecord{
     _time++;
     _timerLabel.text = [NSString stringWithFormat:@"%ld S", _time];
-    if (_time == 10) {
+//    if (_time == 5) {
+//        [_movieWriter configure];
+//        [_movieWriter pause];
+//    } else if (_time == 10) {
+//        [_movieWriter configure];
+//        [_movieWriter continueWrite];
+//    }
+    if (_time == 15) {
         [_filter removeTarget:_movieWriter];
         _videoCamera.audioEncodingTarget = nil;
         [_movieWriter finishRecording];
         [_timer invalidate];
-        YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
-        vc.imagePicker = self;
-        [self presentViewController:vc animated:YES completion:^{
-            
-        }];
+        NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+        [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
+//        YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
+//        vc.imagePicker = self;
+//        [self presentViewController:vc animated:YES completion:^{
+//
+//        }];
 //        [self.navigationController pushViewController:vc animated:NO];
     }
 }
@@ -382,6 +394,7 @@
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
@@ -429,12 +442,13 @@
     _videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     [_videoCamera addAudioInputsAndOutputs];////该句可防止允许声音通过的情况下，避免录制第一帧黑屏闪屏(====)
     
-    _filter = [[GPUImageTransformFilter alloc] init];
+    _filter = [[GPUImageSepiaFilter alloc] init];
     
     
     [_videoCamera addTarget:_filter];
     [_videoCamera startCameraCapture];
-
+    
+    [self setupTopView];
 //    _videoCamera.horizontallyMirrorFrontFacingCamera = YES;// YES代表前置的时候不是镜像
 //    _videoCamera.horizontallyMirrorRearFacingCamera = YES;//
     
@@ -509,6 +523,67 @@
 }
 
 
+-(void)setupTopView{
+    UIView* topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KMAIN_SCREEN_WIDTH, kStatusBarHeight + 44)];
+    [self.view addSubview:topView];
+    topView.backgroundColor = [UIColor blackColor];
+    topView.alpha = 0.3;
+    
+//    UIButton* button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, 50, 30)];
+//    [self.view addSubview:button1];
+//    [button1 setTitle:@"灰白滤镜" forState:UIControlStateNormal];
+//    [button1 addTarget:self action:@selector(changeCameraFilter:) forControlEvents:UIControlEventTouchUpInside];
+//
+//    UIButton* button2 = [[UIButton alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, 50, 30)];
+//    [self.view addSubview:button2];
+//    [button2 setTitle:@"灰白滤镜" forState:UIControlStateNormal];
+//    [button2 addTarget:self action:@selector(changeCameraFilter:) forControlEvents:UIControlEventTouchUpInside];
+//
+//    UIButton* button3 = [[UIButton alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, 50, 30)];
+//    [self.view addSubview:button1];
+//    [button3 setTitle:@"灰白滤镜" forState:UIControlStateNormal];
+//    [button3 addTarget:self action:@selector(changeCameraFilter:) forControlEvents:UIControlEventTouchUpInside];
+    NSArray* titleArray = @[@"灰白", @"美颜", @"普通"];
+    UISegmentedControl* segment = [[UISegmentedControl alloc] initWithItems:titleArray];
+    segment.frame = CGRectMake(0, kStatusBarHeight, KMAIN_SCREEN_WIDTH, 44);
+    [self.view addSubview:segment];
+    [segment addTarget:self action:@selector(changeCameraFilter:) forControlEvents:UIControlEventValueChanged];
+    segment.selectedSegmentIndex = 2;
+}
+
+-(void)changeCameraFilter:(UISegmentedControl*)seg{
+    NSInteger index = seg.selectedSegmentIndex;
+    [self.videoCamera removeAllTargets];
+    switch (index) {
+        case 2:
+        {
+            [_videoCamera addTarget:_filter];
+        }
+            break;
+        case 1:
+        {
+            GPUImageBeautifyFilter* filter = [[GPUImageBeautifyFilter alloc]init];
+            [_videoCamera addTarget:filter];
+            [filter addTarget:(GPUImageView*)_preview];
+            [filter addTarget:_movieWriter];
+            
+        }
+            break;
+        case 0:
+        {
+            GPUImageSepiaFilter* filter = [[GPUImageSepiaFilter alloc] init];
+            [_videoCamera addTarget:filter];
+            [filter addTarget:(GPUImageView*)_preview];
+            filter.intensity = 0.0;
+            [filter addTarget:_movieWriter];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 
 -(void)dealloc{

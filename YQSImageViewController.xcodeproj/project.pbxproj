@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		04ECA5FB2E4B69A6D1AFFBEC /* libPods-YQSImageViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 924D0CBEE553679B5EAC4FEB /* libPods-YQSImageViewController.a */; };
+		6141DD6E200EEEE500B25EC3 /* YQSStyleChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141DD6D200EEEE500B25EC3 /* YQSStyleChooseViewController.m */; };
+		6141DD73200EF4F700B25EC3 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141DD71200EF4F600B25EC3 /* GPUImageBeautifyFilter.m */; };
+		6141DD7A200F256800B25EC3 /* YQSImageMovieWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141DD79200F256800B25EC3 /* YQSImageMovieWriter.m */; };
 		618AC45520088A3E00F6BBD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC45420088A3E00F6BBD8 /* AppDelegate.m */; };
 		618AC45820088A3E00F6BBD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC45720088A3E00F6BBD8 /* ViewController.m */; };
 		618AC45B20088A3E00F6BBD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 618AC45920088A3E00F6BBD8 /* Main.storyboard */; };
@@ -40,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6141DD6C200EEEE500B25EC3 /* YQSStyleChooseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQSStyleChooseViewController.h; sourceTree = "<group>"; };
+		6141DD6D200EEEE500B25EC3 /* YQSStyleChooseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQSStyleChooseViewController.m; sourceTree = "<group>"; };
+		6141DD71200EF4F600B25EC3 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		6141DD72200EF4F700B25EC3 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		6141DD78200F256800B25EC3 /* YQSImageMovieWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQSImageMovieWriter.h; sourceTree = "<group>"; };
+		6141DD79200F256800B25EC3 /* YQSImageMovieWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQSImageMovieWriter.m; sourceTree = "<group>"; };
 		618AC45020088A3E00F6BBD8 /* YQSImageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQSImageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		618AC45320088A3E00F6BBD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		618AC45420088A3E00F6BBD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -134,10 +143,16 @@
 				618AC45420088A3E00F6BBD8 /* AppDelegate.m */,
 				618AC45620088A3E00F6BBD8 /* ViewController.h */,
 				618AC45720088A3E00F6BBD8 /* ViewController.m */,
+				6141DD72200EF4F700B25EC3 /* GPUImageBeautifyFilter.h */,
+				6141DD71200EF4F600B25EC3 /* GPUImageBeautifyFilter.m */,
 				618AC48520088A8B00F6BBD8 /* YQSPlayVideoViewController.h */,
 				618AC48820088A8B00F6BBD8 /* YQSPlayVideoViewController.m */,
 				618AC48720088A8B00F6BBD8 /* YQSImagePickerViewController.h */,
 				618AC48620088A8B00F6BBD8 /* YQSImagePickerViewController.m */,
+				6141DD6C200EEEE500B25EC3 /* YQSStyleChooseViewController.h */,
+				6141DD6D200EEEE500B25EC3 /* YQSStyleChooseViewController.m */,
+				6141DD78200F256800B25EC3 /* YQSImageMovieWriter.h */,
+				6141DD79200F256800B25EC3 /* YQSImageMovieWriter.m */,
 				618AC48C20088AA800F6BBD8 /* UIViewExt.h */,
 				618AC48B20088AA800F6BBD8 /* UIViewExt.m */,
 				618AC48E20088D9C00F6BBD8 /* YQSImagePrefix.pch */,
@@ -372,13 +387,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6141DD73200EF4F700B25EC3 /* GPUImageBeautifyFilter.m in Sources */,
 				618AC45820088A3E00F6BBD8 /* ViewController.m in Sources */,
 				618AC46320088A3E00F6BBD8 /* main.m in Sources */,
+				6141DD7A200F256800B25EC3 /* YQSImageMovieWriter.m in Sources */,
 				618AC48920088A8B00F6BBD8 /* YQSImagePickerViewController.m in Sources */,
 				618AC49120089EA800F6BBD8 /* SCItemInfoUtils.m in Sources */,
 				618AC45520088A3E00F6BBD8 /* AppDelegate.m in Sources */,
 				618AC48D20088AA800F6BBD8 /* UIViewExt.m in Sources */,
 				618AC48A20088A8B00F6BBD8 /* YQSPlayVideoViewController.m in Sources */,
+				6141DD6E200EEEE500B25EC3 /* YQSStyleChooseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
