@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 //#import "JSSendVideoViewController.h"
 //#import "LKBaseViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @class YQSImagePickerViewController;
 
 @protocol LKRecordVideoVidewControllerDelegate
 
--(void)imagePickerController:(YQSImagePickerViewController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)userInfo;
+-(void)imagePickerController:(YQSImagePickerViewController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)userInfo andResult:(AVAssetExportSessionStatus)status;
 
 @end
 

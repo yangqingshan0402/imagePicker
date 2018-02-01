@@ -37,7 +37,9 @@
 //    [self.player play];
     AVPlayerViewController* controller = [[AVPlayerViewController alloc] init];
     _playerViewController = controller;
-    AVPlayerItem *item  = [[AVPlayerItem alloc]initWithURL:[NSURL fileURLWithPath:MovieFromAlumbPath]];
+    NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+//    [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
+    AVPlayerItem *item  = [[AVPlayerItem alloc]initWithURL:[NSURL fileURLWithPath:pathToMovie]];
     //通过AVPlayerItem创建AVPlayer
     self.player = [[AVPlayer alloc]initWithPlayerItem:item];
     //给AVPlayer一个播放的layer层
@@ -95,13 +97,9 @@
 }
 
 -(void)sendAction:(UIButton*)button{
-    [self.imagePicker.delegate imagePickerController:self.imagePicker didFinishPickingMediaWithInfo:nil];
-    [self.imagePicker dismissViewControllerAnimated:NO completion:^{
-
-    }];
-    [self.imagePicker dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+    [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
+    
     
 }
 
@@ -154,7 +152,66 @@
 //        [_player pause];
 //    });
 }
+-(void)encodeVideoOrientation:(NSURL*)anOutputFileURL{
+    
+    AVURLAsset * videoAsset = [[AVURLAsset alloc]initWithURL:anOutputFileURL options:nil];
+    
+    AVAssetExportSession * assetExport = [[AVAssetExportSession alloc] initWithAsset:videoAsset
+                                                                          presetName:AVAssetExportPresetMediumQuality];
+    NSString* mp4Path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.mp4"];
+    
+    NSFileManager* defaultFileManager = [NSFileManager defaultManager];
+    if ([defaultFileManager fileExistsAtPath:mp4Path]) {
+        [defaultFileManager removeItemAtPath:mp4Path error:nil];
+    }
+    
+    assetExport.outputURL = [NSURL fileURLWithPath: mp4Path];
+    assetExport.shouldOptimizeForNetworkUse = YES;
+    assetExport.outputFileType = AVFileTypeMPEG4;
+    //    assetExport.videoComposition = [self getVideoComposition:videoAsset];
 
+    [assetExport exportAsynchronouslyWithCompletionHandler:^{
+
+        switch ([assetExport status]) {
+                
+            case AVAssetExportSessionStatusFailed:
+            {
+                NSLog(@"AVAssetExportSessionStatusFailed!");
+                [self.imagePicker.delegate imagePickerController:self.imagePicker didFinishPickingMediaWithInfo:nil andResult:AVAssetExportSessionStatusFailed];
+                break;
+            }
+                
+            case AVAssetExportSessionStatusCancelled:
+                NSLog(@"Export canceled");
+                [self.imagePicker.delegate imagePickerController:self.imagePicker didFinishPickingMediaWithInfo:nil andResult:AVAssetExportSessionStatusCancelled];
+                break;
+            case AVAssetExportSessionStatusCompleted:
+            {
+                NSLog(@"Successful!");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.imagePicker.delegate imagePickerController:self.imagePicker didFinishPickingMediaWithInfo:nil andResult:AVAssetExportSessionStatusCompleted];
+                    [self.imagePicker dismissViewControllerAnimated:NO completion:^{
+                        
+                    }];
+                    [self.imagePicker dismissViewControllerAnimated:YES completion:^{
+                        
+                    }];
+//                    YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
+//                    vc.imagePicker = self;
+//                    [self presentViewController:vc animated:NO completion:^{
+//
+//                    }];
+                    
+                });
+                
+            }
+                
+                break;
+            default:
+                break;
+        }
+    }];
+}
 -(void)tapAction{
     if ([_playerViewController.player timeControlStatus]==AVPlayerTimeControlStatusPlaying) {
         [_playerViewController.player pause];

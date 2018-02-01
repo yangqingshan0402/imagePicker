@@ -18,8 +18,8 @@
 @implementation ViewController
 
 
--(void)imagePickerController:(YQSImagePickerViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)userInfo{
-    
+-(void)imagePickerController:(YQSImagePickerViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)userInfo andResult:(AVAssetExportSessionStatus)status{
+
 }
 
 - (IBAction)sender:(id)sender {

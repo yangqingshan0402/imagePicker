@@ -124,7 +124,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    [self addObserverForAppState];
     NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
     unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
     NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
@@ -163,7 +163,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.motionManager stopDeviceMotionUpdates];
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 
@@ -249,9 +249,18 @@
         [_filter removeTarget:_movieWriter];
         
         [_timer invalidate];
-        NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
-        [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
+            vc.imagePicker = self;
+            [self presentViewController:vc animated:NO completion:^{
+                
+            }];
+            
+        });
+//        NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+//        [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
+//
     }
 
 }
@@ -443,8 +452,7 @@
     [_videoCamera addAudioInputsAndOutputs];////该句可防止允许声音通过的情况下，避免录制第一帧黑屏闪屏(====)
     
     _filter = [[GPUImageSepiaFilter alloc] init];
-    
-    
+    ((GPUImageSepiaFilter*)_filter).intensity = 0.0;
     [_videoCamera addTarget:_filter];
     [_videoCamera startCameraCapture];
     
@@ -522,6 +530,21 @@
 
 }
 
+-(void)addObserverForAppState{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActiveNotification) name:UIApplicationWillResignActiveNotification object:nil];
+}
+
+-(void)appWillResignActiveNotification{
+    _videoCamera.audioEncodingTarget = nil;
+    [_movieWriter finishRecording];
+
+    [_filter removeTarget:_movieWriter];
+    
+    [_timer invalidate];
+    NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+    [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
+}
+
 
 -(void)setupTopView{
     UIView* topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KMAIN_SCREEN_WIDTH, kStatusBarHeight + 44)];
@@ -543,12 +566,12 @@
 //    [self.view addSubview:button1];
 //    [button3 setTitle:@"灰白滤镜" forState:UIControlStateNormal];
 //    [button3 addTarget:self action:@selector(changeCameraFilter:) forControlEvents:UIControlEventTouchUpInside];
-    NSArray* titleArray = @[@"灰白", @"美颜", @"普通"];
+    NSArray* titleArray = @[@"普通", @"美颜", @"灰白"];
     UISegmentedControl* segment = [[UISegmentedControl alloc] initWithItems:titleArray];
     segment.frame = CGRectMake(0, kStatusBarHeight, KMAIN_SCREEN_WIDTH, 44);
     [self.view addSubview:segment];
     [segment addTarget:self action:@selector(changeCameraFilter:) forControlEvents:UIControlEventValueChanged];
-    segment.selectedSegmentIndex = 2;
+    segment.selectedSegmentIndex = 0;
 }
 
 -(void)changeCameraFilter:(UISegmentedControl*)seg{
@@ -557,7 +580,11 @@
     switch (index) {
         case 2:
         {
-            [_videoCamera addTarget:_filter];
+            GPUImageSepiaFilter* filter = [[GPUImageSepiaFilter alloc] init];
+            [_videoCamera addTarget:filter];
+            [filter addTarget:(GPUImageView*)_preview];
+            filter.intensity = 1.0;
+            [_videoCamera addTarget:filter];
         }
             break;
         case 1:
