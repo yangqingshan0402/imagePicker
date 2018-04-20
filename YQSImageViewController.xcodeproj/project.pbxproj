@@ -23,6 +23,8 @@
 		618AC48A20088A8B00F6BBD8 /* YQSPlayVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC48820088A8B00F6BBD8 /* YQSPlayVideoViewController.m */; };
 		618AC48D20088AA800F6BBD8 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC48B20088AA800F6BBD8 /* UIViewExt.m */; };
 		618AC49120089EA800F6BBD8 /* SCItemInfoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 618AC49020089EA800F6BBD8 /* SCItemInfoUtils.m */; };
+		619AAC1A202441E400FBE4B1 /* images.Bundle in Resources */ = {isa = PBXBuildFile; fileRef = 619AAC19202441E300FBE4B1 /* images.Bundle */; };
+		61A015182089EF46004835A0 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A015162089EF45004835A0 /* NSString+Size.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,9 @@
 		618AC48E20088D9C00F6BBD8 /* YQSImagePrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQSImagePrefix.pch; sourceTree = "<group>"; };
 		618AC48F20089EA700F6BBD8 /* SCItemInfoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCItemInfoUtils.h; sourceTree = "<group>"; };
 		618AC49020089EA800F6BBD8 /* SCItemInfoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCItemInfoUtils.m; sourceTree = "<group>"; };
+		619AAC19202441E300FBE4B1 /* images.Bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = images.Bundle; sourceTree = "<group>"; };
+		61A015162089EF45004835A0 /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
+		61A015172089EF46004835A0 /* NSString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
 		64B3A12A547D3186FB3D8EBC /* Pods-YQSImageViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YQSImageViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YQSImageViewController/Pods-YQSImageViewController.debug.xcconfig"; sourceTree = "<group>"; };
 		7009861123958C9AD13D966C /* Pods-YQSImageViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YQSImageViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-YQSImageViewController/Pods-YQSImageViewController.release.xcconfig"; sourceTree = "<group>"; };
 		924D0CBEE553679B5EAC4FEB /* libPods-YQSImageViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YQSImageViewController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +144,7 @@
 		618AC45220088A3E00F6BBD8 /* YQSImageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				619AAC19202441E300FBE4B1 /* images.Bundle */,
 				618AC45320088A3E00F6BBD8 /* AppDelegate.h */,
 				618AC45420088A3E00F6BBD8 /* AppDelegate.m */,
 				618AC45620088A3E00F6BBD8 /* ViewController.h */,
@@ -158,6 +164,8 @@
 				618AC48E20088D9C00F6BBD8 /* YQSImagePrefix.pch */,
 				618AC48F20089EA700F6BBD8 /* SCItemInfoUtils.h */,
 				618AC49020089EA800F6BBD8 /* SCItemInfoUtils.m */,
+				61A015172089EF46004835A0 /* NSString+Size.h */,
+				61A015162089EF45004835A0 /* NSString+Size.m */,
 				618AC45920088A3E00F6BBD8 /* Main.storyboard */,
 				618AC45C20088A3E00F6BBD8 /* Assets.xcassets */,
 				618AC45E20088A3E00F6BBD8 /* LaunchScreen.storyboard */,
@@ -305,6 +313,7 @@
 				618AC46020088A3E00F6BBD8 /* LaunchScreen.storyboard in Resources */,
 				618AC45D20088A3E00F6BBD8 /* Assets.xcassets in Resources */,
 				618AC45B20088A3E00F6BBD8 /* Main.storyboard in Resources */,
+				619AAC1A202441E400FBE4B1 /* images.Bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +399,7 @@
 				6141DD73200EF4F700B25EC3 /* GPUImageBeautifyFilter.m in Sources */,
 				618AC45820088A3E00F6BBD8 /* ViewController.m in Sources */,
 				618AC46320088A3E00F6BBD8 /* main.m in Sources */,
+				61A015182089EF46004835A0 /* NSString+Size.m in Sources */,
 				6141DD7A200F256800B25EC3 /* YQSImageMovieWriter.m in Sources */,
 				618AC48920088A8B00F6BBD8 /* YQSImagePickerViewController.m in Sources */,
 				618AC49120089EA800F6BBD8 /* SCItemInfoUtils.m in Sources */,

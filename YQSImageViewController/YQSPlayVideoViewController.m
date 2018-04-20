@@ -63,28 +63,33 @@
     [tapView addGestureRecognizer:tap];
     _tapView = tapView;
     
-
-    _sendButton = [[UIButton alloc] initWithFrame:CGRectMake(KMAIN_SCREEN_WIDTH - 70, KMAIN_SCREEN_HEIGHT - 50, 60, 50)];
-    [_sendButton setTitle:@"send" forState:UIControlStateNormal];
+    CGFloat width = 71;
+    CGFloat height = width;
+    _sendButton = [[UIButton alloc] initWithFrame:CGRectMake(KMAIN_SCREEN_WIDTH - width - 20, KMAIN_SCREEN_HEIGHT - height-20, width, height)];
+//    [_sendButton setTitle:@"send" forState:UIControlStateNormal];
     [self.view addSubview:_sendButton];
+    [_sendButton setBackgroundImage:BundleImage(@"btn_play_ok_nor") forState:UIControlStateNormal];
+    [_sendButton setBackgroundImage:BundleImage(@"btn_play_ok_press") forState:UIControlStateHighlighted];
     _sendButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [_sendButton addTarget:self action:@selector(sendAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton* retakeButton = [[UIButton alloc] initWithFrame:CGRectMake(10, KMAIN_SCREEN_HEIGHT - 50, 60, 40)];
-    [retakeButton setTitle:@"retake" forState:UIControlStateNormal];
+    UIButton* retakeButton = [[UIButton alloc] initWithFrame:CGRectMake(20, KMAIN_SCREEN_HEIGHT - height - 20, width, height)];
+//    [retakeButton setTitle:@"retake" forState:UIControlStateNormal];
         [retakeButton addTarget:self action:@selector(retake) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:retakeButton];
+    [retakeButton setBackgroundImage:BundleImage(@"btn_play_back_nor") forState:UIControlStateNormal];
+    [retakeButton setBackgroundImage:BundleImage(@"btn_play_back_press") forState:UIControlStateHighlighted];
     retakeButton.titleLabel.font = [UIFont systemFontOfSize:20];
     // Do any additional setup after loading the view.
     
-    [_playerViewController.player play];
+//    [_playerViewController.player play];
     
     _playView = [[UIImageView alloc] init];
     [self.view addSubview:_playView];
     _playView.frame = CGRectMake(0, 0, 100, 100);
     _playView.center = self.view.center;
     _playView.image = [UIImage imageNamed:@"play_icon"];
-    _playView.hidden = YES;
+    _playView.hidden = NO;
 }
 
 -(void)retake{

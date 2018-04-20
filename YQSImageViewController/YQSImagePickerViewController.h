@@ -11,6 +11,9 @@
 //#import "LKBaseViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
+#define myBundle [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"images.Bundle"]
+#define BundleImage(x) [UIImage imageWithContentsOfFile:[myBundle stringByAppendingPathComponent:x]]
+
 @class YQSImagePickerViewController;
 
 @protocol LKRecordVideoVidewControllerDelegate

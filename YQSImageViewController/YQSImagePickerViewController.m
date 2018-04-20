@@ -28,6 +28,8 @@
 @property (nonatomic, strong) CMMotionManager* motionManager;
 @property (nonatomic, assign)UIDeviceOrientation orientationNew;
 @property (nonatomic, strong)UIView* preview;
+@property (nonatomic, strong)UIButton* cancelButton;
+@property (nonatomic, strong)UIButton* switchCameraButton;
 
 @property (nonatomic , assign) BOOL recording;
 
@@ -94,17 +96,20 @@
     [super loadView];
 //    self.view = [[GPUImageView alloc] initWithFrame:CGRectMake(0, 0, KMAIN_SCREEN_WIDTH, KMAIN_SCREEN_HEIGHT)];
 }
--(void)setBackButton{
+-(void)setControlButton{
     UIButton* backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, self.view.height - 40 - 20, 60, 40)];
     [backButton setTitle:NSLocalizedString(@"cancel", nil) forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     backButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.view addSubview:backButton];
+    _cancelButton = backButton;
     
     UIButton* change_video_capture_direction_button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width - 70, self.view.height - 40 - 20, 60, 40)];
-    [change_video_capture_direction_button setImage:[UIImage imageNamed:@"sj_record_video_capture_direction"] forState:UIControlStateNormal];
+//        UIImage* image = BundleImage(@"sj_record_video_capture_direction");
+    [change_video_capture_direction_button setImage:BundleImage(@"sj_record_video_capture_direction") forState:UIControlStateNormal];
     [self.view addSubview:change_video_capture_direction_button];
     [change_video_capture_direction_button addTarget:self action:@selector(changeDirection:) forControlEvents:UIControlEventTouchUpInside];
+    _switchCameraButton = change_video_capture_direction_button;
 
 }
 
@@ -134,7 +139,7 @@
     
     _recordButton.selected = NO;
     _time = 0;
-    _timerLabel.text = [NSString stringWithFormat:@"%ld S", _time];
+    _timerLabel.text = [NSString stringWithFormat:@"%02d:%02d", _time/60, _time%60];
     [_filter addTarget:_movieWriter];
     
     _videoCamera.audioEncodingTarget = _movieWriter;
@@ -169,7 +174,7 @@
 
 -(void)timerOfRecord{
     _time++;
-    _timerLabel.text = [NSString stringWithFormat:@"%ld S", _time];
+    _timerLabel.text = [NSString stringWithFormat:@"%02d:%02d", _time/60, _time%60];
 //    if (_time == 5) {
 //        [_movieWriter configure];
 //        [_movieWriter pause];
@@ -178,12 +183,15 @@
 //        [_movieWriter continueWrite];
 //    }
     if (_time == 15) {
+        /*
         [_filter removeTarget:_movieWriter];
         _videoCamera.audioEncodingTarget = nil;
         [_movieWriter finishRecording];
         [_timer invalidate];
         NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
         [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
+         */
+        [self recordFinished];
 //        YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
 //        vc.imagePicker = self;
 //        [self presentViewController:vc animated:YES completion:^{
@@ -230,34 +238,40 @@
         _movieWriter.transform = transform;
 
 }
-
+-(void)recordFinished{
+    _switchCameraButton.hidden = NO;
+    _cancelButton.hidden = NO;
+    _videoCamera.audioEncodingTarget = nil;
+    [_movieWriter finishRecording];
+    //        __weak typeof(self) weakSelf = self;
+    //        [_movieWriter setCompletionBlock:^{
+    //            [weakSelf.filter removeTarget:weakSelf.movieWriter];
+    //        }];
+    [_filter removeTarget:_movieWriter];
+    
+    [_timer invalidate];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
+        vc.imagePicker = self;
+        [self presentViewController:vc animated:NO completion:^{
+            
+        }];
+        
+    });
+}
 -(void)recordVideo:(UIButton*)button{
     if (!button.selected) {
         button.selected = YES;
+        _switchCameraButton.hidden = YES;
+        _cancelButton.hidden = YES;
         [self changeTheOrientaionOfWriter];
         
         [_movieWriter startRecording];
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerOfRecord) userInfo:nil repeats:YES];
     }else{
         
-        _videoCamera.audioEncodingTarget = nil;
-        [_movieWriter finishRecording];
-//        __weak typeof(self) weakSelf = self;
-//        [_movieWriter setCompletionBlock:^{
-//            [weakSelf.filter removeTarget:weakSelf.movieWriter];
-//        }];
-        [_filter removeTarget:_movieWriter];
-        
-        [_timer invalidate];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
-            vc.imagePicker = self;
-            [self presentViewController:vc animated:NO completion:^{
-                
-            }];
-            
-        });
+        [self recordFinished];
 //        NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
 //        [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
 //
@@ -411,13 +425,15 @@
     self.preview.contentMode = kGPUImageFillModePreserveAspectRatioAndFill;
     [self.view addSubview:_preview];
     _recording = NO;
-    [self setBackButton];
+    [self setControlButton];
     _time = 0;
     UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     button.center = CGPointMake(KMAIN_SCREEN_WIDTH/2, KMAIN_SCREEN_HEIGHT - 50);
+    
+//    NSString* bundPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"images.Bundle"];
 
-    [button setImage:[UIImage imageNamed:@"sj_record_video_start"] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"sj_record_video_pause"] forState:UIControlStateSelected];
+    [button setImage:BundleImage(@"sj_record_video_start") forState:UIControlStateNormal];
+    [button setImage:BundleImage(@"sj_record_video_pause")forState:UIControlStateSelected];
     
     [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(recordVideo:) forControlEvents:UIControlEventTouchUpInside];
@@ -428,7 +444,7 @@
     timeLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:timeLabel];
     timeLabel.center = CGPointMake(KMAIN_SCREEN_WIDTH/2, timeLabel.center.y);
-    timeLabel.text = @"0 S";
+    timeLabel.text = @"00:00";
     timeLabel.textColor = [UIColor whiteColor];
     _timerLabel = timeLabel;
     
@@ -535,14 +551,16 @@
 }
 
 -(void)appWillResignActiveNotification{
-    _videoCamera.audioEncodingTarget = nil;
-    [_movieWriter finishRecording];
+//    _videoCamera.audioEncodingTarget = nil;
+//    [_movieWriter finishRecording];
+//
+//    [_filter removeTarget:_movieWriter];
+//
+//    [_timer invalidate];
+//    NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+//    [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
+    [self back];
 
-    [_filter removeTarget:_movieWriter];
-    
-    [_timer invalidate];
-    NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
-    [self encodeVideoOrientation:[NSURL fileURLWithPath:pathToMovie]];
 }
 
 
