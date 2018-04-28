@@ -115,6 +115,11 @@
 
 -(void)changeDirection:(UIButton*)button{
     [_videoCamera rotateCamera];
+    if (_videoCamera.cameraPosition == AVCaptureDevicePositionFront) {
+        [((GPUImageView*)self.preview) setInputRotation:kGPUImageFlipHorizonal atIndex:0];
+    }else{
+        [((GPUImageView*)self.preview) setInputRotation:kGPUImageNoRotation atIndex:0];
+    }
 }
 
 -(void)back{
@@ -210,12 +215,20 @@
             case UIDeviceOrientationLandscapeLeft:
             {
 //                orientation = UIInterfaceOrientationLandscapeRight;
-                transform = CGAffineTransformRotate(CGAffineTransformIdentity, -M_PI_2);
+                if (_videoCamera.cameraPosition == AVCaptureDevicePositionFront) {
+                    transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_2);
+                }else{
+                    transform = CGAffineTransformRotate(CGAffineTransformIdentity, -M_PI_2);
+                }
             }
                 break;
             case UIDeviceOrientationLandscapeRight:
             {
-                transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_2);
+                if (_videoCamera.cameraPosition == AVCaptureDevicePositionFront) {
+                    transform = CGAffineTransformRotate(CGAffineTransformIdentity, -M_PI_2);
+                }else{
+                    transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_2);
+                }
 //                orientation = UIInterfaceOrientationLandscapeLeft;
                 
             }
@@ -242,7 +255,16 @@
     _switchCameraButton.hidden = NO;
     _cancelButton.hidden = NO;
     _videoCamera.audioEncodingTarget = nil;
-    [_movieWriter finishRecording];
+    [_movieWriter finishRecordingWithCompletionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
+            vc.imagePicker = self;
+            [self presentViewController:vc animated:NO completion:^{
+                
+            }];
+            
+        });
+    }];
     //        __weak typeof(self) weakSelf = self;
     //        [_movieWriter setCompletionBlock:^{
     //            [weakSelf.filter removeTarget:weakSelf.movieWriter];
@@ -251,14 +273,7 @@
     
     [_timer invalidate];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        YQSPlayVideoViewController* vc = [[YQSPlayVideoViewController alloc] init];
-        vc.imagePicker = self;
-        [self presentViewController:vc animated:NO completion:^{
-            
-        }];
-        
-    });
+    
 }
 -(void)recordVideo:(UIButton*)button{
     if (!button.selected) {
